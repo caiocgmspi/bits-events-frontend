@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <HeaderApp />
+    <HeaderApp v-if="base !== 'login'"/>
     <MainApp />
-    <FooterApp />
+    <FooterApp v-if="base !== 'login'"/>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import MainApp from './components/MainApp.vue'
 import HeaderApp from './components/HeaderApp.vue'
 import FooterApp from './components/FooterApp.vue'
+import { ref } from 'vue';
 
 export default {
   name: 'App',
@@ -17,15 +18,26 @@ export default {
     MainApp,
     HeaderApp,
     FooterApp
+  },
+  data() {
+    return  {
+      base : ref(null)
+    }
+  },
+  mounted: function(){
+   let baseAux = document?.location.href?.split('/');
+   this.base = baseAux[baseAux?.length - 1];
   }
 }
 </script>
 
 <style>
 
+  @import './assets/styles.css';
+
 *{
   box-sizing: border-box;
-  box-shadow: 1px 1px 1px red, -1px -1px 1px green;
+  /* box-shadow: 1px 1px 1px red, -1px -1px 1px green; */
 }
 
 #app {

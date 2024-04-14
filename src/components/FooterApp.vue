@@ -13,7 +13,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    background-color: purple;
+    background-color: var(--bg-template-ice);
     padding: 1rem 1rem;
     min-height: 120px;
 }

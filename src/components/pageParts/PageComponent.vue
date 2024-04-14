@@ -18,7 +18,7 @@ defineProps({
             </h1>
         </div>
         <div class="page-content">
-
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -28,7 +28,15 @@ defineProps({
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: seagreen;
     padding: 0.75rem 0.75em;
+}
+
+.page-header h1{
+    text-align: left;
+    padding: 0 0 !important;
+}
+
+.page-content {
+    margin-top: 1rem;
 }
 </style>
