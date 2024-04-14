@@ -1,0 +1,88 @@
+* {
+    --bg-template: #fefefe;
+    --bg-template-ice: rgb(239, 246, 246);
+    
+    --primary-color: rgb(26, 205, 26);
+    --primary-color-hover: rgb(22, 132, 22);
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--primary-color);
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: var(--primary-color-hover);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* Menus */
+.menu {
+    list-style-type: none;
+}
+
+.menu li a {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.4rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+/* Margins */
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+/* Forms Inputs */
+input,
+select {
+    padding: 0.5rem 0.75rem;
+    height: 45px;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+    color: #fff;
+}
+
+.btn.btn-secondary {
+    background-color: #242424;
+    color: #fff;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #131313;
+    color: #fff;
+}
