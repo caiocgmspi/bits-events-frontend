@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
 import HomeView from '@/components/pages/HomeView.vue'
 import EventView from './components/pages/events/EventView.vue'
@@ -8,6 +8,7 @@ import ListAccounts from './components/pages/accounts/ListAccounts.vue'
 import CreateAccount from './components/pages/accounts/CreateAccount.vue'
 import ListBuildings from './components/pages/buildings/ListBuildings.vue'
 import CreateBuilding from './components/pages/buildings/CreateBuilding.vue'
+import LoginView from './components/pages/LoginView.vue'
 
 const routes = [
   { path: '/', component: HomeView },
@@ -21,13 +22,15 @@ const routes = [
   { path: '/accounts/create', component: CreateAccount},
   { path: '/accounts/:id/alter', component: CreateAccount},
 
-  { path: '/buildings/', component: ListBuildings},
-  { path: '/buildings/create', component: CreateBuilding},
-  { path: '/buildings/:id/alter', component: CreateBuilding},
+  { path: '/companies/', component: ListBuildings},
+  { path: '/companies/create', component: CreateBuilding},
+  { path: '/companies/:id/alter', component: CreateBuilding},
+
+  { path: '/login', component: LoginView},
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });
 
