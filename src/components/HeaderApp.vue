@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue';
 const menus = ref([]);
 const currentUser = (
     {
-        role: 'admin'
+        role: 'admin'   
     }
 )
 const loadMenus = () => {

@@ -9,6 +9,7 @@ import CreateAccount from './components/pages/accounts/CreateAccount.vue'
 import ListBuildings from './components/pages/buildings/ListBuildings.vue'
 import CreateBuilding from './components/pages/buildings/CreateBuilding.vue'
 import LoginView from './components/pages/LoginView.vue'
+import MyAccount from './components/pages/MyAccount.vue'
 
 const routes = [
   { path: '/', component: HomeView },
@@ -25,6 +26,8 @@ const routes = [
   { path: '/companies/', component: ListBuildings},
   { path: '/companies/create', component: CreateBuilding},
   { path: '/companies/:id/alter', component: CreateBuilding},
+
+  { path: '/my-account', component: MyAccount},
 
   { path: '/login', component: LoginView},
 ]
