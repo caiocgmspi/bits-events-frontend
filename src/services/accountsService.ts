@@ -1,7 +1,7 @@
 export const load = () => {
     return [
         {
-            name: 'Cario Graco',
+            name: 'Caio Graco',
             create_at: new Date().toLocaleDateString(),
             id: 3,
         },
