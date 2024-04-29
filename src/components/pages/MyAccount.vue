@@ -14,6 +14,7 @@
         <h2>{{ userInfo.meusEventos }}</h2>
         <button class="evento-button">{{ userInfo.evento01 }}</button>
         <button class="evento-button">{{ userInfo.evento02 }}</button>
+        <button class="evento-button">{{ userInfo.evento03 }}</button>
       </div>
     </div>
   </template>
@@ -26,9 +27,10 @@
           nomeCompleto: 'Nome Completo do Usuário',
           nomeUsuario: 'username',
           descricao: 'Espaço para uma breve descrição sobre o usuário.',
-          meusEventos: 'Eventos',
+          meusEventos: 'Meus Eventos',
           evento01: 'Nome do Evento 01',
-          evento02: 'Nome do Evento 02'
+          evento02: 'Nome do Evento 02',
+          evento03: 'Nome do Evento 03'
         },
         caminhoParaFotoPerfil: 'https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg'
       };
@@ -60,7 +62,7 @@
     border-radius: 5px;
     padding: 15px 20px;
     margin: 5px;
-    cursor: pointer;
+    cursor: pointer; 
     transition: background-color 0.3s ease;
   }
   

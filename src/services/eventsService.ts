@@ -6,7 +6,7 @@ export const load = () => {
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),
-            participants: 7,
+            participants: '7 de 10',
             id: 5,
         }
     ]
