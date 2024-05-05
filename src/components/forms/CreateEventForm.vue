@@ -26,7 +26,7 @@ onMounted(() => {
         <form class="d-flex flex-column gap-4">
             <div class="d-flex gap-2">
                 <!-- Nome -->
-                <InputContainer label="Nome">
+                <InputContainer label="Nome do Evento">
                     <input 
                         type="text"
                         name="name"
@@ -36,7 +36,34 @@ onMounted(() => {
                         :class="{readonly}"
                         :readonly="readonly"
                     />
+            </InputContainer>
+
+                            <!-- Tipo do Evento -->
+                            <InputContainer label="Tipo do Evento">
+                <input 
+                    type="text"
+                    name="name"
+                    :value="form['name']"
+                    @input="(e) => form['name'] = e.target.value"
+                    placeholder="Tipo do Evento"
+                    :class="{readonly}"
+                    :readonly="readonly"
+                />
+            </InputContainer>
+
+                                            <!-- Tipo do Evento -->
+                                            <InputContainer label="Número de Parcipantes">
+                    <input 
+                        type="number"
+                        name="number"
+                        :value="form['number']"
+                        @input="(e) => form['number'] = e.target.value"
+                        placeholder="Número de Parcipantes"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
                 </InputContainer>
+                
                 <!-- Telefone Responsável -->
                 <InputContainer label="Telefone / Celular do Responsável">
                     <input 
@@ -52,7 +79,7 @@ onMounted(() => {
             </div>
             <div class="d-flex gap-2">
                 <!-- Estado -->
-                <InputContainer label="Estado">
+                <InputContainer label="Estado do Evento">
                     <select
                         name="estado"
                         @change="(e) => form['estado'] = e.target.value"
@@ -90,10 +117,10 @@ onMounted(() => {
                     type="submit"
                 >
                 <template v-if="form?.id">
-                    Editar Conta
+                    Editar evento
                 </template>
                 <template v-if="!form?.id">
-                    Criar Conta
+                    Criar evento
                 </template>
                 </button>
             </div>
