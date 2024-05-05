@@ -2,6 +2,13 @@
 import CardItem from '@/components/cardItem.vue';
 import PageComponent from '@/components/pageParts/PageComponent.vue';
 import { load } from '@/services/accountsService.ts';
+import { onMounted, ref } from 'vue';
+
+const accounts = ref([]);
+
+onMounted(async () => {
+    accounts.value = await load();
+})
 
 </script>
 
@@ -15,7 +22,7 @@ import { load } from '@/services/accountsService.ts';
             </div>
         </template>
         <div class="d-flex flex-column">
-            <CardItem v-for="item in load()" :key="item?.id" :item="item" relation="accounts"/>
+            <CardItem v-for="item in accounts" :key="item?.id" :item="item" relation="accounts"/>
         </div>
     </PageComponent>
 </template>
