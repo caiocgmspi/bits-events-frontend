@@ -7,7 +7,16 @@ import { load } from '@/services/accountsService.ts';
 
 <template>
     <PageComponent title="Usuários">
-        <CardItem v-for="item in load()" :key="item?.id" :item="item" relation="accounts"/>
+        <template #page-header>
+            <div class="actions">
+                <RouterLink :to="'/accounts/create'" class="btn btn-primary">
+                    Criar Usuário
+                </RouterLink>
+            </div>
+        </template>
+        <div class="d-flex flex-column">
+            <CardItem v-for="item in load()" :key="item?.id" :item="item" relation="accounts"/>
+        </div>
     </PageComponent>
 </template>
 
