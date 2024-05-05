@@ -69,7 +69,7 @@ onMounted(() => {
             <!-- Sair -->
             <ul class="menu d-flex flex-wrap gap-2">
                 <li class="menu-item">
-                    <RouterLink :to="'/my-account/sair'">
+                    <RouterLink :to="'/login'">
                         Sair
                     </RouterLink>
                 </li>

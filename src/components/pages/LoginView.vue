@@ -16,10 +16,13 @@
                   </div>
                   <!-- Actions -->
                   <div class="login-actions d-flex flex-column gap-2">
+                        <RouterLink class="btn btn-primary" to="/events/">
+                              Login
+                        </RouterLink>
                         <RouterLink class="btn btn-secondary" to="/my-account/recovery">
                               Recuperar Conta
                         </RouterLink>
-                        <RouterLink class="btn btn-primary" to="/create-account">
+                        <RouterLink class="btn" to="/create-account">
                               Criar Conta
                         </RouterLink>
                   </div>
