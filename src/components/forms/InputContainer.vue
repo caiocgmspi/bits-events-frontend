@@ -21,7 +21,7 @@ defineProps({
     flex-direction: column;
     align-items: start;
     min-width: 150px;
-    max-width: 350px;
+    max-width: 250px;
     flex-grow: 1;
 }
 
