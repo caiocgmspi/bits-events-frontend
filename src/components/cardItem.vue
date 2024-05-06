@@ -64,7 +64,7 @@ defineProps({
             </p>
             <!-- Actions -->
             <router-link :to="`/${relation}/${item.id}/details`" class="go ml-auto">
-                Detalhes
+                Detalhes do evento
             </router-link>
         </div>
     </div>

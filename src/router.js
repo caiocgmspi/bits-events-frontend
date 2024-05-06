@@ -11,6 +11,7 @@ import ListBuildings from './components/pages/buildings/ListBuildings.vue'
 import CreateBuilding from './components/pages/buildings/CreateBuilding.vue'
 import LoginView from './components/pages/LoginView.vue'
 import MyAccount from './components/pages/MyAccount.vue'
+import ViewEvents from './components/pages/events/ViewEvents.vue'
 
 const routes = [
   { path: '/', component: HomeView },
@@ -24,6 +25,8 @@ const routes = [
   { path: '/accounts/create', component: CreateAccount},
   { path: '/accounts/:id/alter', component: CreateAccount},
   { path: '/accounts/:id/details', component: ViewAccount},
+
+  { path: '/events/:id/details', component: ViewEvents},
 
   { path: '/companies/', component: ListBuildings},
   { path: '/companies/create', component: CreateBuilding},
