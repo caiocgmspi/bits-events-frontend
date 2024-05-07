@@ -9,7 +9,6 @@ const data = ref({});
 
 onMounted(async () => {
     let id = useRoute().params?.id;
-
     data.value = await fetch(id);
 });
 

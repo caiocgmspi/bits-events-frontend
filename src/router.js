@@ -12,6 +12,7 @@ import CreateBuilding from './components/pages/buildings/CreateBuilding.vue'
 import LoginView from './components/pages/LoginView.vue'
 import MyAccount from './components/pages/MyAccount.vue'
 import ViewEvents from './components/pages/events/ViewEvents.vue'
+import RecoveryAccount from './components/pages/accounts/RecoveryAccount.vue'
 
 const routes = [
   { path: '/', component: HomeView },
@@ -19,12 +20,15 @@ const routes = [
   { path: '/events/', component: ListEvents},
   { path: '/events/create', component: CreateEventView},
   { path: '/events/:id/view', component: EventView},
-  { path: '/events/:id/alter', component: CreateEventView},
+  { path: '/events/:id/cep/alter', component: CreateEventView},
 
   { path: '/accounts/', component: ListAccounts},
   { path: '/accounts/create', component: CreateAccount},
   { path: '/accounts/:id/alter', component: CreateAccount},
   { path: '/accounts/:id/details', component: ViewAccount},
+  { path: '/my-account/recovery', component: RecoveryAccount},
+
+  { path: '/events/:id/details', component: ViewEvents},
 
   { path: '/events/:id/details', component: ViewEvents},
 
