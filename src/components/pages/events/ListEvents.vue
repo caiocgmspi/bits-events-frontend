@@ -10,13 +10,17 @@ onMounted(async () => {
     data.value = await load();
 })
 </script>
-
 <template>
     <PageComponent title="Eventos">
-        <CardItem v-for="item in data" :key="item?.id" :item="item" relation="events"/>
+        <div class="actions">
+            <RouterLink :to="'/events/create'" class="btn btn-primary" style="float: right; margin-top: 50px;">
+                Criar Evento
+            </RouterLink>
+        </div>
+
+       <CardItem v-for="item in data" :key="item?.id" :item="item" relation="events"/>
     </PageComponent>
 </template>
 
 <style scoped>
-
 </style>

@@ -91,11 +91,12 @@ onMounted(() => {
 
 .header-logo{
     height: 100%;
+    
 }
 
 .header-logo img{
     width: auto;
-    max-width: 120px;
+    max-width: 100%;
     height: 100%;
 }
 

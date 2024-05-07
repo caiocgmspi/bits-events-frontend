@@ -22,6 +22,7 @@ onMounted(async () => {
     <p class="descricao">
         {{ event?.description }}
     </p>
+
 </div>
 
 </template>
@@ -34,4 +35,5 @@ onMounted(async () => {
 .titulo {
     color:black;
 }
+
 </style>

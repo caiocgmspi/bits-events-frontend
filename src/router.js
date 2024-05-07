@@ -30,6 +30,8 @@ const routes = [
 
   { path: '/events/:id/details', component: ViewEvents},
 
+  { path: '/events/:id/details', component: ViewEvents},
+
   { path: '/companies/', component: ListBuildings},
   { path: '/companies/create', component: CreateBuilding},
   { path: '/companies/:id/alter', component: CreateBuilding},
