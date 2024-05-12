@@ -31,6 +31,10 @@ defineProps({
     width: 100%;
 }
 
+.input-container textarea {
+    min-height: 120px;
+}
+
 .input-container .readonly{
     opacity: 0.7;
     background-color: #efeff2;

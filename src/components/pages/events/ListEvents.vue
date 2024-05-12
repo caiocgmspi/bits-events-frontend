@@ -12,11 +12,14 @@ onMounted(async () => {
 </script>
 <template>
     <PageComponent title="Eventos">
-        <div class="actions">
-            <RouterLink :to="'/events/create'" class="btn btn-primary" style="float: right; margin-top: 50px;">
-                Criar Evento
-            </RouterLink>
-        </div>
+
+        <template #page-header>
+            <div class="actions">
+                <RouterLink :to="'/events/create'" class="btn btn-primary">
+                    Criar Evento
+                </RouterLink>
+            </div>
+        </template>
 
        <CardItem v-for="item in data" :key="item?.id" :item="item" relation="events"/>
     </PageComponent>
