@@ -11,7 +11,7 @@ export const load = async () => {
         },
         {
             name: 'Bits Digitais 2024',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),

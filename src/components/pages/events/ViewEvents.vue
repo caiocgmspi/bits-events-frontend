@@ -1,71 +1,75 @@
-<script setup>
-import { fetch } from '@/services/eventsService.ts'
-
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-
-let event = ref();
-
-onMounted(async () => {
-    let id = useRoute().params?.id;
-    event.value = await fetch(id);
-});
-
-</script>
-
 <template>
-
-<div class="Events">
-    <h2 class="Titulo">
-        Detalhes do seu evento
-    </h2>
-
-    <h4 class="titulo">
+    <div class="Events">
+      <h2 class="Titulo">
+        Detalhes do seu evento:
+      </h2>
+  
+      <h4 class="titulo">
         {{ event?.name }}
-    </h4>
-    <p class="descricao">
+      </h4>
+      <p class="descricao">
         Descrição: {{ event?.description }}
-    </p>
-
-    <p class="participants">
+      </p>
+  
+      <p class="participants">
         Participantes do evento: {{ event?.participants }}
-    </p>
-
-    <p class="create_at">
+      </p>
+  
+      <p class="create_at">
         Criado em: {{ event?.create_at }}
-    </p>
-    
-
-</div>
-
-</template>
-
-<style scoped> 
-.descricao {
+      </p>
+  
+      <p class="date">
+        Início do evento: {{ event?.start_in }}
+      </p>
+  
+      <p class="date-end">
+        Data do fim: {{ event?.end_in }}
+      </p>
+    </div>
+  </template>
+  
+  <script>
+  import { onMounted, ref } from 'vue';
+  import { useRoute } from 'vue-router';
+  import { fetch } from '@/services/eventsService.ts';
+  
+  export default {
+    setup() {
+      const event = ref(null);
+  
+      onMounted(async () => {
+        const id = useRoute().params?.id;
+        event.value = await fetch(id);
+      });
+  
+      return { event };
+    }
+  }
+  </script>
+  
+  <style scoped>
+  .Titulo {
+    text-align: center;
+  }
+  
+  .titulo {
+    color: black;
+  }
+  
+  .descricao,
+  .participants,
+  .create_at,
+  .date,
+  .date-end {
     color: rgb(247, 247, 247);
     background-color: rgb(6, 122, 31);
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -200%);
     padding: 10px;
-}
+    margin-left: 400px;
+    margin-right: 400px;
+    border-radius: 6px;
 
-.participants {
-    color: rgb(247, 247, 247);
-    background-color: rgb(6, 122, 31);
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    padding: 10px;
-}
-
-
-.titulo {
-    color:black;
-}
-
-</style>
+  }
+  </style>
+  
