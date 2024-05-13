@@ -2,7 +2,7 @@ export const load = async () => {
     return [
         {
             name: 'Juazeiro Eventos 2024',
-            description: 'Uma descrição qualquer aqui para popular o tamanho de texto!',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),
@@ -11,11 +11,11 @@ export const load = async () => {
         },
         {
             name: 'Bits Digitais 2024',
-            description: 'Uma descrição qualquer aqui para popular o tamanho de texto!',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.',
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),
-            participants: '7 de 10',
+            participants: '10 de 20',
             id: 2,
         }
     ]
