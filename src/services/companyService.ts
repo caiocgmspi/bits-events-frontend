@@ -2,7 +2,7 @@ export const load = async () => {
     return [
         {
             name: 'Enterprise',
-            description: 'Uma descriçao qualquer aqui para popular o tamanho de texto!',
+            description: 'Uma descrição qualquer aqui para popular o tamanho de texto!',
             create_at: new Date().toLocaleDateString(),
             id: 5,
         },
@@ -16,7 +16,7 @@ export const load = async () => {
             estado: 'Ceára',
             email: 'enterprise@email.com',
             telefone: '88 99999-0000',
-            description: 'La la la la la'
+            description: 'Lorem ipsum lorem ipsum'
         }
     ]
 }

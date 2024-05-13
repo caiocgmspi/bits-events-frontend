@@ -2,7 +2,7 @@ export const load = async () => {
     return [
         {
             name: 'Juazeiro Eventos 2024',
-            description: 'Uma descriçao qualquer aqui para popular o tamanho de texto!',
+            description: 'Uma descrição qualquer aqui para popular o tamanho de texto!',
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),
@@ -11,7 +11,7 @@ export const load = async () => {
         },
         {
             name: 'Bits Digitais 2024',
-            description: 'Uma descriçao qualquer aqui para popular o tamanho de texto!',
+            description: 'Uma descrição qualquer aqui para popular o tamanho de texto!',
             create_at: new Date().toLocaleDateString(),
             start_in: new Date().toLocaleDateString(),
             end_in: new Date().toLocaleDateString(),
