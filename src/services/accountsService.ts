@@ -33,7 +33,7 @@ export const load = async () => {
     ]
 }
 
-export const fetch = async (id) => {
+export const fetchId = async (id) => {
     return (await load())?.filter((a) => a.id == id)[0] ?? {};
 }
 

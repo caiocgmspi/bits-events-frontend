@@ -5,7 +5,10 @@ import EventView from './components/pages/events/EventView.vue'
 import ListEvents from './components/pages/events/ListEvents.vue'
 import CreateEventView from './components/pages/events/CreateEventView.vue'
 import ListAccounts from './components/pages/accounts/ListAccounts.vue'
+
 import CreateAccount from './components/pages/accounts/CreateAccount.vue'
+import CreateNewAccount from './components/pages/accounts/CreateNewAccount.vue'
+
 import ViewAccount from './components/pages/accounts/ViewAccount.vue'
 import ListBuildings from './components/pages/buildings/ListBuildings.vue'
 import CreateBuilding from './components/pages/buildings/CreateBuilding.vue'
@@ -26,6 +29,7 @@ const routes = [
 
   { path: '/accounts/', component: ListAccounts},
   { path: '/accounts/create', component: CreateAccount},
+  { path: '/create-account', component: CreateNewAccount},
   { path: '/accounts/:id/alter', component: CreateAccount},
   { path: '/accounts/:id/details', component: ViewAccount},
   { path: '/my-account/recovery', component: RecoveryAccount},
