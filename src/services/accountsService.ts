@@ -1,4 +1,9 @@
+import { api } from "@/api";
+
 export const load = async () => {
+
+    return await api.get('pessoas/');
+
     return [
         {
             name: 'Caio Graco',
@@ -33,18 +38,22 @@ export const load = async () => {
     ]
 }
 
+export const login = async (form) => {
+    return await api.post('login/', form);
+}
+
 export const fetchId = async (id) => {
     return (await load())?.filter((a) => a.id == id)[0] ?? {};
 }
 
 export const create = async (form) => {
-
+    return await api.post('pessoas/', form);
 }
 
 export const update = async (id, form) => {
-
+    return await api.put(`pessoas/${id}`, form);
 }
 
 export const remove = async (id) => {
-
+    return await api.delete(`pessoas/${id}`);
 }
