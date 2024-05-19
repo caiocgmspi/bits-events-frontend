@@ -11,6 +11,7 @@ import MainApp from './components/MainApp.vue'
 import HeaderApp from './components/HeaderApp.vue'
 import FooterApp from './components/FooterApp.vue'
 import { ref } from 'vue';
+import router from './router';
 
 export default {
   name: 'App',
@@ -20,13 +21,23 @@ export default {
     FooterApp
   },
   data() {
+
+    router.afterEach(() => {
+      this.detectRoute()
+    });
+
     return  {
       base : ref(null)
     }
   },
+  methods: {
+    detectRoute: function() {
+      let baseAux = document?.location.href?.split('/');
+      this.base = baseAux[baseAux?.length - 1];
+    }
+  },
   mounted: function(){
-   let baseAux = document?.location.href?.split('/');
-   this.base = baseAux[baseAux?.length - 1];
+    this.detectRoute()
   }
 }
 </script>
