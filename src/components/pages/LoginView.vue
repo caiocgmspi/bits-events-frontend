@@ -1,4 +1,26 @@
 <script setup>
+import { login as accountLogin} from '@/services/accountsService.ts';
+import { onMounted, ref, watch } from 'vue';
+import * as app from '@/stores/app-store.js';
+import router from '@/router';
+
+let form = ref({});
+let hasLogged = ref(null);
+
+onMounted(() => {
+      let data = app.app().get();
+      hasLogged.value = data.token;
+})
+
+const login = async () => {
+      await accountLogin(form.value);
+}
+
+watch(hasLogged, (v) => {
+      if (v) {
+            router.push('/events');
+      }
+});
 
 </script>
 
@@ -11,14 +33,14 @@
                   </h4>
                   <!-- Forms -->
                   <div class="login-forms d-flex flex-column gap-2">
-                        <input type="email" name="email" placeholder="Email" />
-                        <input type="password" name="password" placeholder="Senha" />
+                        <input @input="(e) => form['email'] = e.target.value" type="email" name="email" placeholder="Email" />
+                        <input @input="(e) => form['password'] = e.target.value" type="password" name="password" placeholder="Senha" />
                   </div>
                   <!-- Actions -->
                   <div class="login-actions d-flex flex-column gap-2">
-                        <RouterLink class="btn btn-primary" to="/events/">
+                        <button @click="login" type="button" class="btn btn-primary">
                               Login
-                        </RouterLink>
+                        </button>
                         <RouterLink class="btn btn-secondary" to="/my-account/recovery">
                               Recuperar Conta
                         </RouterLink>

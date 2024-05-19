@@ -1,4 +1,9 @@
+import { api } from "@/api";
+
 export const load = async () => {
+
+    return await api.get('eventos/');
+
     return [
         {
             name: 'Juazeiro Eventos 2024',
@@ -26,13 +31,13 @@ export const fetch = async (id) => {
 }
 
 export const create = async (form) => {
-
+    return await api.post('eventos/', form);
 }
 
 export const update = async (id, form) => {
-
+    return await api.put(`eventos/${id}`, form);
 }
 
 export const remove = async (id) => {
-
+    return await api.delete(`eventos/${id}`);
 }

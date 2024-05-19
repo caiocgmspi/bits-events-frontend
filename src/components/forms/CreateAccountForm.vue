@@ -2,6 +2,8 @@
 import { onMounted, ref, defineProps } from 'vue';
 import InputContainer from './InputContainer.vue';
 import { estados } from '@/utils/brazilStates.js';
+import { update, create } from '@/services/accountsService.ts';
+
 
 const form = ref({});
 const props = defineProps({
@@ -19,11 +21,22 @@ onMounted(() => {
     form.value = props.data ?? {};
 });
 
+const submit = async () => {
+    
+    //Editar
+    if (form.value?.id) {
+        await update(form.value.id, form.value);
+    } else { // Criar
+        await create(form.value);
+    }
+
+    return false;
+}
 </script>
 
 <template>
     <div class="criar-conta form">
-        <form class="d-flex flex-column gap-4">
+        <form class="d-flex flex-column gap-4" @submit.prevent="submit">
             <div class="d-flex gap-2">
                 <!-- Nome -->
                 <InputContainer label="Nome">
@@ -66,8 +79,8 @@ onMounted(() => {
                         type="telephone"
                         name="telefone"
                         placeholder="(88) 99999-9999"
-                        :value="form['telefone']"
-                        @input="(e) => form['telefone'] = e.target.value"
+                        :value="form['phone']"
+                        @input="(e) => form['phone'] = e.target.value"
                         :class="{readonly}"
                         :readonly="readonly"
                     />

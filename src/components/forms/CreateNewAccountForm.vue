@@ -18,6 +18,11 @@ const props = defineProps({
 onMounted(() => {
     form.value = props.data ?? {};
 });
+
+const submit = async (ev) => {
+    console.log(ev)
+    return false;
+}
 </script>
 
 <template>
@@ -135,7 +140,8 @@ onMounted(() => {
             <div class="ml-auto">
                 <button 
                     class="btn btn-primary" 
-                    type="submit"
+                    type="button"
+                    @click="submit"
                 >
                     <template v-if="form?.id">
                         Editar Conta

@@ -70,8 +70,8 @@ onMounted(() => {
                         type="telephone"
                         name="telefone"
                         placeholder="(88) 99999-9999"
-                        :value="form['telefone']"
-                        @input="(e) => form['telefone'] = e.target.value"
+                        :value="form['phone']"
+                        @input="(e) => form['phone'] = e.target.value"
                         :class="{readonly}"
                         :readonly="readonly"
                     />
