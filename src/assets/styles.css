@@ -89,6 +89,11 @@ select {
     color: #fff;
 }
 
+.btn.btn-danger {
+    background-color: rgb(216, 66, 43);
+    color: #fff;
+}
+
 /* Gaps */
 .gap-1{
     gap: 0.25rem;

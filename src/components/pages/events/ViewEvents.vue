@@ -1,5 +1,23 @@
+<script setup>
+// import { onMounted } from 'vue';
+
+let inscrito = ref(true);
+
+const eventSubscribe = () => {
+  inscrito.value = !inscrito.value;
+}
+
+</script>
 <template>
     <div class="Events">
+      <button class="btn btn-secondary" :class="{'btn-danger' : inscrito}" @click="eventSubscribe">
+        <template v-if="!inscrito">
+          Se Inscrever
+        </template>
+        <template v-else>
+          Remover Inscrição
+        </template>
+      </button>
       <h2 class="Titulo">
         Detalhes do seu evento:
       </h2>
