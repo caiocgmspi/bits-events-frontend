@@ -9,7 +9,7 @@ const form = ref({});
 onMounted(async () => {
     let id = useRoute().params?.id;
     
-    form.value = await companyService.fetch(id);
+    form.value = await companyService.fetchId(id);
 });
 
 </script>

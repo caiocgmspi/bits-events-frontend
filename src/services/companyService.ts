@@ -1,4 +1,12 @@
+import { api } from "@/api";
+
 export const load = async () => {
+
+    return await api.get('company/', {
+        method: 
+        'GET'
+    });
+
     return [
         {
             name: 'Enterprise',
@@ -21,18 +29,18 @@ export const load = async () => {
     ]
 }
 
-export const fetch = async (id) => {
+export const fetchId = async (id) => {
     return (await load()).filter((a) => a.id == id)[0] ?? {};
 }
 
 export const create = async (form) => {
-
+    return await api.post('company/', form);
 }
 
 export const update = async (id, form) => {
-
+    return await api.put(`company/${id}`, form);
 }
 
 export const remove = async (id) => {
-
+    return await api.delete(`company/${id}`);
 }

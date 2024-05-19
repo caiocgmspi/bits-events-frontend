@@ -32,6 +32,15 @@ defineProps({
                     </span>
                 </span>
                 <!-- Start -->
+                <span v-if="item.email">
+                    <span>
+                        Email:
+                        <span>
+                            {{ item.email }}
+                        </span>
+                    </span>
+                </span>
+                <!-- Start -->
                 <span v-if="item.start_in">
                     <span>
                         Inicia em:
