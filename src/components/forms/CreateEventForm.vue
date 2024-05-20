@@ -109,6 +109,18 @@ onMounted(() => {
                         :readonly="readonly"
                     />
                 </InputContainer>
+                
+                <InputContainer label="Duração do Evento (horas)">
+                    <input 
+                        type="number"
+                        name="duration"
+                        :value="form['duration']"
+                        @input="(e) => form['duration'] = e.target.value"
+                        placeholder="Duração do Evento"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
             </div>
             <!-- Submeter -->
             <div class="ml-auto">
