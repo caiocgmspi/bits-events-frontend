@@ -43,7 +43,7 @@ export const login = async (form) => {
 }
 
 export const fetchId = async (id) => {
-    return (await load())?.filter((a) => a.id == id)[0] ?? {};
+    return await api.get('pessoas/' + id);
 }
 
 export const create = async (form) => {

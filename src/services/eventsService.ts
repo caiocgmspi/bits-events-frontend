@@ -26,8 +26,24 @@ export const load = async () => {
     ]
 }
 
-export const fetch = async (id) => {
-    return (await load())?.filter((a) => a.id == id)[0] ?? {};
+export const subscribe = async (id) => {
+    return await api.post('eventos/' + id + '/subscribe', {});
+}
+
+export const unsubscribe = async (id) => {
+    return await api.post('eventos/' + id + '/unsubscribe', {});
+}
+
+export const unsubscribeById = async (id) => {
+    return await api.post('participantes/' + id + '/unsubscribe', {});
+}
+
+export const fetchParticipantes = async (id) => {
+    return await api.get('participantes/' + id);
+}
+
+export const fetchId = async (id) => {
+    return await api.get('eventos/' + id);
 }
 
 export const create = async (form) => {
