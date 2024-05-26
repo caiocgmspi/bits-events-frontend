@@ -2,10 +2,7 @@ import { api } from "@/api";
 
 export const load = async () => {
 
-    return await api.get('company/', {
-        method: 
-        'GET'
-    });
+    return await api.get('company/');
 
     return [
         {
@@ -30,7 +27,7 @@ export const load = async () => {
 }
 
 export const fetchId = async (id) => {
-    return (await load()).filter((a) => a.id == id)[0] ?? {};
+    return await api.get('company/' + id);
 }
 
 export const create = async (form) => {
