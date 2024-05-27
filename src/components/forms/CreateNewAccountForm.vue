@@ -154,7 +154,3 @@ const submit = async (ev) => {
         </form>
     </div>
 </template>
-
-<style>
-
-</style>
