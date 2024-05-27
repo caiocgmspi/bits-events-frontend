@@ -19,7 +19,7 @@ const submit = (e) => {
 </script>
 
 <template>
-    <PageComponent title="Criar/Editar Empresa">
+    <PageComponent title="Criar / Editar Empresa">
         <form method="post" class="d-flex flex-column gap-4" @submit.prevent="submit($event)">
             <div class="d-flex gap-2">
                 <!-- Nome -->
@@ -42,6 +42,18 @@ const submit = (e) => {
                         :value="form['cpfoucnpj']"
                         @input="(e) => form['cpfoucnpj'] = e.target.value"
                         placeholder="000.000.000-00"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+                <!-- Tipo de Eventos -->
+                <InputContainer label="Tipo de Eventos">
+                    <input 
+                        type="text"
+                        name="tipoeventos"
+                        :value="form['tipoeventos']"
+                        @input="(e) => form['tipoeventos'] = e.target.value"
+                        placeholder="ex: E-sports"
                         :class="{readonly}"
                         :readonly="readonly"
                     />
@@ -70,6 +82,7 @@ const submit = (e) => {
                         :readonly="readonly"
                     />
                 </InputContainer>
+                
             </div>
             <div class="d-flex gap-2">
                 <!-- Description -->
@@ -115,6 +128,7 @@ const submit = (e) => {
                         :readonly="readonly"
                     />
                 </InputContainer>
+                
             </div>
             <div class="d-flex flex-column gap-2">
                 <!-- Password -->
