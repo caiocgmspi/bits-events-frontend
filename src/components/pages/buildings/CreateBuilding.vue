@@ -53,7 +53,7 @@ const submit = (e) => {
                         name="tipoeventos"
                         :value="form['tipoeventos']"
                         @input="(e) => form['tipoeventos'] = e.target.value"
-                        placeholder="ex: E-sports"
+                        placeholder="Ex: Congresso"
                         :class="{readonly}"
                         :readonly="readonly"
                     />

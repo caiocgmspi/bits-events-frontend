@@ -1,10 +1,11 @@
 <script setup>
-import PageComponent from '@/components/pageParts/PageComponent.vue';
+import PageComponent from '@/components/HomeScreen.vue';
+
 </script>
 
 <template>
-    <PageComponent title="Seus Eventos">
-        PageComponent
+    <PageComponent title="Home">
+        <HomeScreen/>
     </PageComponent>
 </template>
 
