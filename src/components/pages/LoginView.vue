@@ -13,7 +13,12 @@ onMounted(() => {
 })
 
 const login = async () => {
-      await accountLogin(form.value);
+      let data = await accountLogin(form.value);
+      
+      app.app().set({
+            'token' : data.token,
+            'user' : data.user
+      });
 }
 
 watch(hasLogged, (v) => {
