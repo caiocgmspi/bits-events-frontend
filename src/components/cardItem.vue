@@ -67,6 +67,15 @@ defineProps({
                         </span>
                     </span>
                 </span>
+                <!-- End -->
+                <span v-if="item.value_event">
+                    <span>
+                        Valor:
+                        <span>
+                            R$ {{ item.value_event }}
+                        </span>
+                    </span>
+                </span>
             </div>
             <p v-if="item.description">
                 {{ item.description }}

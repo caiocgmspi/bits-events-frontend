@@ -65,4 +65,9 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+#app span,
+#app p {
+  color: #2c3e50;
+}
 </style>

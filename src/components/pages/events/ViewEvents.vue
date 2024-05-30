@@ -1,17 +1,24 @@
 <template>
     <div class="Events">
-      <button 
-        class="btn btn-secondary" 
-        :class="{'btn-danger' : changeInscricao}" 
-        @click="inscrito = !inscrito"
-        >
-        <template v-if="!changeInscricao">
-          Se Inscrever
-        </template>
-        <template v-else>
-          Remover Inscrição
-        </template>
-      </button>
+      <div class="actions d-flex gap-2">
+        <!-- Se inscrever -->
+        <button 
+          class="ml-auto btn btn-secondary" 
+          :class="{'btn-danger' : changeInscricao}" 
+          @click="inscrito = !inscrito"
+          >
+          <template v-if="!changeInscricao">
+            Se Inscrever
+          </template>
+          <template v-else>
+            Remover Inscrição
+          </template>
+        </button>
+        <!-- Ver participantes do evento -->
+        <button class="btn bt-primary"  @click="showParticipants">
+          Ver Participantes
+        </button>
+      </div>
       <h2 class="Titulo">
         Detalhes do seu evento:
       </h2>
@@ -23,7 +30,7 @@
         Descrição: {{ event?.description }}
       </p>
   
-      <p class="participants" @click="showParticipants">
+      <p class="participants">
         Participantes do evento: {{ event?.participants }}
       </p>
   
@@ -82,7 +89,7 @@
 
   let inscrito = ref(false);
   let changeInscricao = ref(false);
-  let showParticipantsFlag = ref(true);
+  let showParticipantsFlag = ref(false);
   let participants = ref([]);
 
   const eventSubscribe = async () => {

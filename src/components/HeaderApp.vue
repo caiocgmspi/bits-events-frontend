@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import * as app from '@/stores/app-store.js';
 
 const menus = ref([]);
 const currentUser = (
@@ -7,8 +8,15 @@ const currentUser = (
         role: 'admin'   
     }
 )
+const user = ref({});
+
 const loadMenus = () => {
     let auxMenus = [
+        {
+            path: '/',
+            name: 'Ínicio',
+            role: ['admin', 'empresa', 'usuario']
+        },
         {
             path: '/companies/',
             name: 'Empresas',
@@ -43,28 +51,42 @@ const loadMenus = () => {
 
 onMounted(() => {
     loadMenus();
+
+    user.value = app.app().get() ?? {};
 });
 </script>
 
 <template>
     <div id="app-header">
-        <div class="header-logo">
+        <a href="/" class="header-logo">
             <img alt="Vue logo" src="@/assets/logo.png">
-        </div>
+        </a>
         <!-- Header Menus -->
         <div class="header-menus mr-auto ml-auto">
             <ul class="menu d-flex flex-wrap gap-2">
-                <li v-for="menu in menus" :key="menu?.path" class="menu-item">
-                    <RouterLink :to="menu?.path">
-                        {{ menu?.name }}
+                <template v-if="user?.id">
+                    <li v-for="menu in menus" :key="menu?.path" class="menu-item">
+                        <RouterLink :to="menu?.path">
+                            {{ menu?.name }}
+                        </RouterLink>
+                    </li>
+                </template>
+                <li v-if="!user?.id">
+                    <RouterLink to="/login">
+                        Login
                     </RouterLink>
                 </li>
             </ul>
         </div>
          <!-- Header User -->
-         <div class="header-user">
-            <div class="user-photo">
-                <img src="" />
+         <div class="header-user" v-if="user?.id">
+            <div class="d-flex align-items-center">
+                <div class="user-photo">
+                    <img src="" />
+                </div>
+                <span class="user-name">
+                    {{ user?.name }}
+                </span>
             </div>
             <!-- Sair -->
             <ul class="menu d-flex flex-wrap gap-2">
@@ -112,5 +134,10 @@ onMounted(() => {
     margin: auto 0 auto 1rem;
     border-radius: 100%;
     background-color: var(--bg-template-ice);
+}
+
+.user-name{
+    display: inline-block;
+    padding: 0.15rem 0.35rem;
 }
 </style>
