@@ -42,6 +42,10 @@ export const fetchParticipantes = async (id) => {
     return await api.get('participantes/' + id);
 }
 
+export const loadMyEvents = async (id) => {
+    return await api.get('eventos-inscritos');
+}
+
 export const fetchId = async (id) => {
     return await api.get('eventos/' + id);
 }
