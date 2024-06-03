@@ -4,7 +4,7 @@ import PageComponent from '@/components/HomeScreen.vue';
 </script>
 
 <template>
-    <PageComponent title="Home">
+    <PageComponent title="Homepage">
         <HomeScreen/>
     </PageComponent>
 </template>
