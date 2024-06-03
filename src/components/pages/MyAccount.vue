@@ -1,7 +1,7 @@
 <template>
     <div class="Inicio">
       <h1>Bem-vindo!</h1>
-      <h2>Acesse as informações da sua conta.</h2>
+      <h2>Informações da sua conta.</h2>
   
       <div class="perfil">
         <img :src="caminhoParaFotoPerfil" alt="Foto do Perfil" class="foto-perfil">

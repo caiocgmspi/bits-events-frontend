@@ -2,6 +2,7 @@
 import { onMounted, ref, defineProps } from 'vue';
 import InputContainer from './InputContainer.vue';
 import { estados } from '@/utils/brazilStates.js';
+import { create } from '@/services/accountsService.ts';
 
 const form = ref({});
 const props = defineProps({
@@ -19,8 +20,8 @@ onMounted(() => {
     form.value = props.data ?? {};
 });
 
-const submit = async (ev) => {
-    console.log(ev)
+const submit = async () => {
+    create(form.value);
     return false;
 }
 </script>

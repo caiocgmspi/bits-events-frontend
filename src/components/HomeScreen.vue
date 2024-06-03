@@ -10,7 +10,7 @@
       <section class="sobre">
         <div class="sobre-container">
           <h2 class="title">Sobre Nós</h2>
-          <p class="description">Somos uma empresa dedicada ao setor de Eventos.</p>
+          <p class="description">Somos uma empresa dedicada ao setor de Eventos, participe de eventos e crie o seu conosco.</p>
         </div>
       </section>
   
