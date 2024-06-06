@@ -1,8 +1,13 @@
 import { api } from "@/api";
+import { app } from "@/stores/app-store";
 
 export const load = async () => {
 
-    return await api.get('eventos/');
+    return (await api.get('eventos/'))?.map((a) => {
+        a.thumbnail = a.thumbnail ? a.thumbnail : 'https://img.freepik.com/fotos-gratis/pessoas-que-participam-de-um-evento-de-alto-protocolo_23-2150951243.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1717027200&semt=sph';
+
+        return a;
+    });
 
     return [
         {
@@ -42,8 +47,12 @@ export const fetchParticipantes = async (id) => {
     return await api.get('participantes/' + id);
 }
 
-export const loadMyEvents = async (id) => {
-    return await api.get('eventos-inscritos');
+export const loadMyEvents = async () => {
+    return (await api.get('eventos/meus-eventos/' + app().get().user?.id))?.map((a) => {
+        a.thumbnail = a.thumbnail ? a.thumbnail : 'https://img.freepik.com/fotos-gratis/pessoas-que-participam-de-um-evento-de-alto-protocolo_23-2150951243.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1717027200&semt=sph';
+
+        return a;
+    });
 }
 
 export const fetchId = async (id) => {

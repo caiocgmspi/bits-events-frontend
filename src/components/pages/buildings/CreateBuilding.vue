@@ -3,6 +3,7 @@ import InputContainer from '@/components/forms/InputContainer.vue';
 import PageComponent from '@/components/pageParts/PageComponent.vue';
 import { onMounted, ref } from 'vue';
 import { estados } from '@/utils/brazilStates.js';
+import {create} from '@/services/companyService.ts';
 
 const form = ref({});
 
@@ -10,9 +11,8 @@ onMounted(() => {
 
 });
 
-const submit = (e) => {
-    alert()
-    console.log(e)
+const submit = () => {
+    create(form.value)
     return false;
 }
 

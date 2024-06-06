@@ -2,6 +2,7 @@
 import { onMounted, ref, defineProps } from 'vue';
 import InputContainer from './InputContainer.vue';
 import { estados } from '@/utils/brazilStates.js';
+import {create} from '@/services/eventsService.ts';
 
 const form = ref({});
 const props = defineProps({
@@ -18,6 +19,11 @@ const props = defineProps({
 onMounted(() => {
     form.value = props.data ?? {};
 });
+
+const submit = () => {
+    create(form.value)
+    return false;
+}
 
 </script>
 
@@ -126,7 +132,8 @@ onMounted(() => {
             <div class="ml-auto">
                 <button 
                     class="btn btn-primary" 
-                    type="submit"
+                    type="button"
+                    @click="submit"
                 >
                 <template v-if="form?.id">
                     Editar evento

@@ -5,8 +5,7 @@
   
       <div class="perfil">
         <img :src="caminhoParaFotoPerfil" alt="Foto do Perfil" class="foto-perfil">
-        <h3>{{ userInfo.nomeCompleto }}</h3>
-        <p>{{ userInfo.nomeUsuario }}</p>
+        <h3>{{  user?.name }}</h3>
         <p>{{ userInfo.descricao }}</p>
       </div>
   
@@ -27,7 +26,7 @@
                 </span>
                 <span>
                   Participantes: 
-                  <span> {{ destaque.participants ?? 0}}</span>
+                  <span> {{ destaque.participantCount ?? 0}}</span>
                 </span>
                 <span>
                   Inicia em: 
@@ -54,6 +53,7 @@
   
   <script>
   import { loadMyEvents } from '@/services/eventsService.ts';
+  import { app } from "@/stores/app-store";
 
   export default {
     data() {
@@ -65,7 +65,8 @@
           descricao: 'Espaço para uma breve descrição sobre o usuário.',
           meusEventos: 'Meus Eventos',
         },
-        caminhoParaFotoPerfil: 'https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg'
+        user: app().get().user,
+        caminhoParaFotoPerfil: 'https://i.etsystatic.com/16205647/r/il/34ebfa/2510573402/il_1080xN.2510573402_753w.jpg'
       };
     },
     mounted() {

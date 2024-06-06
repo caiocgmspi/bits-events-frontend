@@ -30,7 +30,7 @@
                 </span>
                 <span>
                   Participantes: 
-                  <span> {{ destaque.participants ?? 0}}</span>
+                  <span> {{ destaque.participantCount ?? 0}}</span>
                 </span>
                 <span>
                   Inicia em: 

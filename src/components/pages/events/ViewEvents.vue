@@ -31,15 +31,15 @@
       </p>
   
       <p class="participants">
-        Participantes do evento: {{ event?.participants }}
+        Participantes do evento: {{ event?.participantCount }}
       </p>
   
       <p class="create_at">
-        Criado em: {{ event?.create_at }}
+        Criado em: {{ event?.created_at }}
       </p>
   
       <p class="date">
-        Início do evento: {{ event?.start_in }}
+        Início do evento: {{ event?.starts_in }}
       </p>
   
       <p class="date-end">
@@ -140,13 +140,11 @@
   .date,
   .date-end {
     color: rgb(247, 247, 247);
-    background-color: rgb(6, 122, 31);
     text-align: center;
     padding: 10px;
     margin-left: 400px;
     margin-right: 400px;
     border-radius: 6px;
-
   }
 
   .participants-items .participant{

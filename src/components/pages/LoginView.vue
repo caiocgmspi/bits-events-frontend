@@ -17,8 +17,13 @@ const login = async () => {
       
       app.app().set({
             'token' : data.token,
-            'user' : data.user
+            'user' : {
+                  id: data.id,
+                  name: data.nome
+            }
       });
+
+      router.push('/');
 }
 
 watch(hasLogged, (v) => {

@@ -63,7 +63,7 @@ defineProps({
                     <span>
                         Participantes:
                         <span>
-                            {{ item.participants }}
+                            {{ item.participantCount }}
                         </span>
                     </span>
                 </span>

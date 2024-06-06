@@ -39,7 +39,7 @@ export const load = async () => {
 }
 
 export const login = async (form) => {
-    return await api.post('login/', form);
+    return await api.post('pessoas/login/', form);
 }
 
 export const fetchId = async (id) => {

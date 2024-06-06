@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { app } from "./stores/app-store";
 
-const api_url = "http://localhost:3000";
+const api_url = "http://localhost:8090/api";
 
 export const api = {
     get : 
@@ -37,12 +37,12 @@ export const api = {
             mode: 'cors',
             headers: {
                 "Content-Type": "application/json",
-                // "Authorization" : `Bearer ${app().get()?.token}`
+                "Authorization" : `Bearer ${app().get()?.token}`
             }
         };
 
         if (args?.method === 'POST' || args?.method === 'PUT') {
-            init.body =  args?.body ?? {};
+            init.body =  JSON.stringify(args?.body ?? {});
         }
 
         let data = await ( await fetch(`${api_url}/${url}`, init)).json();
