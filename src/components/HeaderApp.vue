@@ -52,7 +52,7 @@ const loadMenus = () => {
 onMounted(() => {
     loadMenus();
 
-    user.value = app.app().get() ?? {};
+    user.value = app.app().get()?.user ?? {};
 });
 </script>
 
@@ -82,7 +82,7 @@ onMounted(() => {
          <div class="header-user" v-if="user?.id">
             <div class="d-flex align-items-center">
                 <div class="user-photo">
-                    <img src="" />
+                    <img src="https://i.etsystatic.com/16205647/r/il/34ebfa/2510573402/il_1080xN.2510573402_753w.jpg" />
                 </div>
                 <span class="user-name">
                     {{ user?.name }}
@@ -134,6 +134,11 @@ onMounted(() => {
     margin: auto 0 auto 1rem;
     border-radius: 100%;
     background-color: var(--bg-template-ice);
+}
+
+.header-user .user-photo img{
+    width:100%;
+    height:100%
 }
 
 .user-name{
