@@ -5,9 +5,7 @@
   
       <div class="perfil">
         <img :src="caminhoParaFotoPerfil" alt="Foto do Perfil" class="foto-perfil">
-        <h3>{{ userInfo.nomeCompleto }}</h3>
-        <p>{{ userInfo.nomeUsuario }}</p>
-        <p>{{ userInfo.descricao }}</p>
+        <h3>{{ user?.name ?? user?.nome ?? 'NOME DO USUÁRIO' }}</h3>
       </div>
   
       <div class="Events">
@@ -21,20 +19,28 @@
             <div class="destaque-content">
               <h3 class="destaque-title">{{ destaque.name }}</h3>
               <div class="details d-flex flex-wrap gap-1">
-                <span >
-                  Valor: 
+                <span class="d-flex gap-1 align-items-center">
+                  <div class="icon">
+                    <icon class="fas fa-dollar" />
+                  </div>
                   <span> R$ {{ destaque.value_event }}</span>
                 </span>
-                <span>
-                  Participantes: 
+                <span class="d-flex gap-1 align-items-center">
+                  <div class="icon">
+                    <icon class="fas fa-users" />
+                  </div>
                   <span> {{ destaque.participants ?? 0}}</span>
                 </span>
-                <span>
-                  Inicia em: 
+                <span class="d-flex gap-1 align-items-center" title="Inicia em">
+                  <div class="icon">
+                    <i class="fa-solid fa-hourglass-start"></i>
+                  </div>
                   <span> {{ destaque.start_in }}</span>
                 </span>
-                <span>
-                  Termina em: 
+                <span class="d-flex gap-1 align-items-center" title="Finaliza em">
+                  <div class="icon">
+                    <i class="fa-solid fa-hourglass-end"></i>
+                  </div>
                   <span> {{ destaque.end_in }}</span>
                 </span>
               </div>
@@ -54,6 +60,7 @@
   
   <script>
   import { loadMyEvents } from '@/services/eventsService.ts';
+  import * as app from '@/stores/app-store.js';
 
   export default {
     data() {
@@ -65,6 +72,7 @@
           descricao: 'Espaço para uma breve descrição sobre o usuário.',
           meusEventos: 'Meus Eventos',
         },
+        user : app.app().get() ?? {},
         caminhoParaFotoPerfil: 'https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg'
       };
     },
@@ -196,6 +204,10 @@
     section{
       margin-bottom: 1.75rem;
       min-width: 250px
+    }
+
+    h3{
+      margin: 0 0;
     }
   </style>
   

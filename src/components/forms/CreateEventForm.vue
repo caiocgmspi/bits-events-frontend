@@ -2,8 +2,13 @@
 import { onMounted, ref, defineProps } from 'vue';
 import InputContainer from './InputContainer.vue';
 import { estados } from '@/utils/brazilStates.js';
+import * as companyService from '@/services/companyService.ts';
+import { create as createEvent } from '@/services/eventsService.ts';
 
-const form = ref({});
+const form = ref({
+    created_at: new Date().toJSON()
+});
+const companys = ref([]);
 const props = defineProps({
     readonly : {
         default: false,
@@ -16,14 +21,36 @@ const props = defineProps({
 });
 
 onMounted(() => {
-    form.value = props.data ?? {};
+    form.value = props.data ?? form.value;
+
+    companyService.load().then((data) => {
+        companys.value = data;
+    })
 });
+
+const create = () => {
+    form.value.payed_event = form.value.value_event > 0;
+    createEvent(form.value);
+}
 
 </script>
 
 <template>
     <div class="criar-evento form">
         <form class="d-flex flex-column gap-4">
+            <div class="d-flex gap-2 mb-2">
+                <InputContainer label="Empresa do evento">
+                    <select @change="(e) => form.company_id = e.target.value">
+                        <option value="0">Escolha uma empresa</option>
+                        <option 
+                            v-for="company in companys" 
+                            :key="`comp_${company?.id}`" 
+                            :value="company?.id">
+                            {{ company?.name }}
+                        </option>
+                    </select>
+                </InputContainer>
+            </div>
             <div class="d-flex gap-2">
                 <!-- Nome -->
                 <InputContainer label="Nome do Evento">
@@ -36,23 +63,21 @@ onMounted(() => {
                         :class="{readonly}"
                         :readonly="readonly"
                     />
-            </InputContainer>
-
-                            <!-- Tipo do Evento -->
-                            <InputContainer label="Tipo do Evento">
-                <input 
-                    type="text"
-                    name="name"
-                    :value="form['name']"
-                    @input="(e) => form['name'] = e.target.value"
-                    placeholder="Tipo do Evento"
-                    :class="{readonly}"
-                    :readonly="readonly"
-                />
-            </InputContainer>
-
-                                            <!-- Tipo do Evento -->
-                                            <InputContainer label="Número de Parcipantes">
+                </InputContainer>
+                <!-- Tipo do Evento -->
+                <InputContainer label="Tipo do Evento">
+                    <input 
+                        type="text"
+                        name="name"
+                        :value="form['name']"
+                        @input="(e) => form['name'] = e.target.value"
+                        placeholder="Tipo do Evento"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+                <!-- Tipo do Evento -->
+                <InputContainer label="Número de Parcipantes">
                     <input 
                         type="number"
                         name="number"
@@ -122,11 +147,58 @@ onMounted(() => {
                     />
                 </InputContainer>
             </div>
+            <div class="d-flex gap-2">
+                <InputContainer label="Data de Início do Evento">
+                    <input 
+                        type="datetime-local"
+                        name="starts_in"
+                        :value="form['starts_in']"
+                        @input="(e) => form['starts_in'] = e.target.value"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+                <InputContainer label="Data de Encerramento do Evento">
+                    <input 
+                        type="datetime-local"
+                        name="end_in"
+                        :value="form['end_in']"
+                        @input="(e) => form['end_in'] = e.target.value"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+                <InputContainer label="Valor do Evento">
+                    <input 
+                        type="number"
+                        name="value_event"
+                        :value="form['value_event'] ?? 0"
+                        min="0"
+                        step="0.1"
+                        @input="(e) => form['value_event'] = e.target.value"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+            </div>
+            <div class="d-flex gap-2">
+                <InputContainer label="Descrição">
+                    <textarea 
+                        name="description"
+                        placeholder="Uma descrição do evento"
+                        :value="form['description']"
+                        @input="(e) => form['description'] = e.target.value"
+                        :class="{readonly}"
+                        :readonly="readonly"
+                    />
+                </InputContainer>
+            </div>
             <!-- Submeter -->
             <div class="ml-auto">
                 <button 
                     class="btn btn-primary" 
-                    type="submit"
+                    type="button"
+                    @click="create"
                 >
                 <template v-if="form?.id">
                     Editar evento

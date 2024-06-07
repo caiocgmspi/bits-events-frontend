@@ -1,8 +1,13 @@
 import { api } from "@/api";
+import {getThumbnail} from '@/utils/thumbnails.js';
 
 export const load = async () => {
 
-    return await api.get('eventos/');
+    return (await api.get('eventos/'))?.map((ev) => {
+        ev.thumbnail = getThumbnail(ev?.id);
+
+        return ev;
+    });
 
     return [
         {
@@ -43,11 +48,17 @@ export const fetchParticipantes = async (id) => {
 }
 
 export const loadMyEvents = async (id) => {
-    return await api.get('eventos-inscritos');
+    return (await api.get('eventos-inscritos'))?.map((ev) => {
+        ev.thumbnail = getThumbnail(ev?.id);
+
+        return ev;
+    });
 }
 
 export const fetchId = async (id) => {
-    return await api.get('eventos/' + id);
+    let ev = await api.get('eventos/' + id);
+    ev.thumbnail = getThumbnail(ev?.id);
+    return ev;
 }
 
 export const create = async (form) => {

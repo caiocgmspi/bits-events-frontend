@@ -1,5 +1,6 @@
 <template>
-    <div class="home">
+    <div id="home-page">
+
       <section class="hero">
         <div class="hero-container">
           <h1 class="title hero-titulo">{{ tituloHero }}</h1>
@@ -7,7 +8,7 @@
         </div>
       </section>
   
-      <section class="sobre">
+      <section v-if="false" class="sobre">
         <div class="sobre-container">
           <h2 class="title">Sobre Nós</h2>
           <p class="description">Somos uma empresa dedicada ao setor de Eventos, participe de eventos e crie o seu conosco.</p>
@@ -15,7 +16,7 @@
       </section>
   
       <section class="destaques">
-        <h2 class="title">Destaques</h2>
+        <h2 class="title" v-if="false">Destaques</h2>
         <div class="destaques-container">
           <div class="destaque" v-for="(destaque, index) in destaques" :key="index">
             <div class="image-container">
@@ -24,21 +25,29 @@
             <div class="destaque-content">
               <h3 class="destaque-title">{{ destaque.name }}</h3>
               <div class="details d-flex flex-wrap gap-1">
-                <span >
-                  Valor: 
+                <span class="d-flex gap-1 align-items-center">
+                  <div class="icon">
+                    <icon class="fas fa-dollar" />
+                  </div>
                   <span> R$ {{ destaque.value_event }}</span>
                 </span>
-                <span>
-                  Participantes: 
+                <span class="d-flex gap-1 align-items-center">
+                  <div class="icon">
+                    <icon class="fas fa-users" />
+                  </div>
                   <span> {{ destaque.participants ?? 0}}</span>
                 </span>
-                <span>
-                  Inicia em: 
-                  <span> {{ destaque.start_in }}</span>
+                <span class="d-flex gap-1 align-items-center" title="Inicia em">
+                  <div class="icon">
+                    <i class="fa-solid fa-hourglass-start"></i>
+                  </div>
+                  <span> {{ toTime(destaque.start_in) }}</span>
                 </span>
-                <span>
-                  Termina em: 
-                  <span> {{ destaque.end_in }}</span>
+                <span class="d-flex gap-1 align-items-center" title="Finaliza em">
+                  <div class="icon">
+                    <i class="fa-solid fa-hourglass-end"></i>
+                  </div>
+                  <span> {{ toTime(destaque.end_in) }}</span>
                 </span>
               </div>
               <p class="mb-2">
@@ -46,6 +55,7 @@
               </p>
               <RouterLink class="btn btn-primary mt-2" :to="`/events/${destaque?.id}/details`">
                   Ver Mais
+                  <i class="fa-solid fa-chevron-right"></i>
               </RouterLink>
             </div>
           </div>
@@ -56,13 +66,15 @@
   
   <script>
   import { load } from '@/services/eventsService.ts';
+  import {toTime} from '@/utils/date.js';
 
   export default {
     data() {
       return {
         tituloHero: "Bem-vindo ao Bits Eventos",
         subtituloHero: "Seu local para participar e criar eventos incrivéis.",
-        destaques: []
+        destaques: [],
+        toTime: toTime
       };
     },
     mounted() {
@@ -74,12 +86,44 @@
   </script>
   
   <style scoped>
+    #home-page {
+      position: relative; 
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      height:290px;
+      background-image: linear-gradient(to right, #49784d, var(--primary-color));
+      position: absolute;
+      top:-1rem;
+      left: -1rem;
+      width: calc(100% + 2rem)
+    }
+
+    .hero .hero-container {
+      margin: auto 0;
+    }
+
+    .hero .hero-container .title,
+    .hero .hero-container p{
+      color: #fff !important;
+    }
+
+    .hero .hero-container .title {
+      font-size: 2.6rem;
+      opacity: 0.87;
+    }
+
     .destaques {
+      position: relative;
+      z-index: 1;
       display: block;
       flex-direction: column;
       gap: 0.5rem;
       border-radius: 0.4rem;
-      padding: 1rem
+      padding: 1rem;
+      padding-top: 230px;
     }
 
     .destaques h2{
@@ -138,6 +182,7 @@
     }
 
     .title {
+      font-size: 1.4rem;
       margin-bottom: 0;
       padding-bottom: 0.5rem;
     }
