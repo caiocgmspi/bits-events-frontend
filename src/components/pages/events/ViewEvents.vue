@@ -1,5 +1,10 @@
 <template>
-    <div class="Events">
+    <div id="page-event">
+      <!-- Thumbnail -->
+      <div class="event-thumbnail">
+        <img :src="event?.thumbnail" />
+      </div>
+
       <div class="actions d-flex gap-2">
         <!-- Se inscrever -->
         <button 
@@ -15,36 +20,51 @@
           </template>
         </button>
         <!-- Ver participantes do evento -->
-        <button class="btn bt-primary"  @click="showParticipants">
+        <button class="btn bt-primary"  v-if="user?.id" @click="showParticipants">
           Ver Participantes
         </button>
       </div>
-      <h2 class="Titulo">
-        Detalhes do seu evento:
-      </h2>
+
+      <div class="event-data">
+
+        <h2 class="Titulo">
+          Detalhes do evento
+          <span class="hightlight">
+            {{ event?.name }}
+          </span>
+        </h2>
+
+        <p class="descricao">
+          Descrição: {{ event?.description }}
+        </p>
   
-      <h4 class="titulo">
-        {{ event?.name }}
-      </h4>
-      <p class="descricao">
-        Descrição: {{ event?.description }}
-      </p>
+        <div class="participants d-flex align-items-center" title="Participantes do evento">
+          <div class="icon">
+            <icon class="fas fa-users" />
+          </div>
+          <span>{{ event?.participants ?? 0 }}</span>
+        </div>
   
-      <p class="participants">
-        Participantes do evento: {{ event?.participantCount }}
-      </p>
-  
-      <p class="create_at">
-        Criado em: {{ event?.created_at }}
-      </p>
-  
-      <p class="date">
-        Início do evento: {{ event?.starts_in }}
-      </p>
-  
-      <p class="date-end">
-        Data do fim: {{ event?.end_in }}
-      </p>
+        <div class="participants d-flex align-items-center" title="Criado em">
+          <div class="icon">
+            <icon class="fas fa-calendar" />
+          </div>
+          <span>{{ toTime(event?.create_at) ?? 0 }}</span>
+        </div>
+
+        <div class="participants d-flex align-items-center" title="Início do evento">
+          <div class="icon">
+            <i class="fa-solid fa-hourglass-start"></i>
+          </div>
+          <span>{{ toTime(event?.start_in) ?? 0 }}</span>
+        </div>
+
+        <div class="participants d-flex align-items-center" title="Fim do evento">
+          <div class="icon">
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+          <span>{{ toTime(event?.end_in) ?? 0 }}</span>
+        </div>
     </div>
 
     <!-- Modal De confirmação de Inscrição -->
@@ -77,6 +97,7 @@
       </div>
     </div>
     </ModalComponent>
+      </div>
   </template>
   
   <script setup>
@@ -84,8 +105,11 @@
   import { useRoute } from 'vue-router';
   import { fetchParticipantes, fetchId, subscribe, unsubscribe, unsubscribeById } from '@/services/eventsService.ts';
   import ModalComponent from '@/components/modals/ModalComponent.vue';
-  
+  import {toTime} from '@/utils/date.js';
+  import { app } from '@/stores/app-store';
+
   const event = ref(null);
+  const user = ref({});
 
   let inscrito = ref(false);
   let changeInscricao = ref(false);
@@ -108,6 +132,7 @@
       const id = useRoute().params?.id;
       event.value = await fetchId(id);
       await loadParticipantes(id);
+      user.value = app().get() ?? {};
   });
 
   const showParticipants = () => {
@@ -126,6 +151,10 @@
 </script>
   
   <style scoped>
+  #page-event{
+    position: relative;
+  }
+
   .Titulo {
     text-align: center;
   }
@@ -139,12 +168,18 @@
   .create_at,
   .date,
   .date-end {
-    color: rgb(247, 247, 247);
-    text-align: center;
-    padding: 10px;
-    margin-left: 400px;
-    margin-right: 400px;
-    border-radius: 6px;
+    max-width: 650px;
+    font-size: 1.15rem;
+    background-color: #fafafa;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 0.7rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .participants-items .participant{
@@ -161,6 +196,40 @@
     font-size: 0.7rem;
     padding: 0.3rem 0.3rem !important;
     margin-left: auto;
+  }
+
+  .event-thumbnail{
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    width: calc(100% + 2rem);
+    height: 380px;
+    background-color: #c0e4c0;
+    z-index: 1;
+  }
+
+  .event-thumbnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .event-data{
+    position: relative;
+    z-index: 2;
+    margin-top: 100px;
+    padding: 20px 0 50px 0;
+    border-radius: 1rem;
+    background-color: #fafafacb;
+    backdrop-filter: blur(3px);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .actions{
+    position: relative;
+    z-index: 2;
   }
   </style>
   

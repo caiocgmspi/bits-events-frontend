@@ -62,7 +62,7 @@ onMounted(() => {
             <img alt="Vue logo" src="@/assets/logo.png">
         </a>
         <!-- Header Menus -->
-        <div class="header-menus mr-auto ml-auto">
+        <div class="header-menus ml-auto">
             <ul class="menu d-flex flex-wrap gap-2">
                 <template v-if="user?.id">
                     <li v-for="menu in menus" :key="menu?.path" class="menu-item">
@@ -71,7 +71,7 @@ onMounted(() => {
                         </RouterLink>
                     </li>
                 </template>
-                <li v-if="!user?.id">
+                <li class="ml-auto" v-if="!user?.id">
                     <RouterLink to="/login">
                         Login
                     </RouterLink>
@@ -113,7 +113,6 @@ onMounted(() => {
 
 .header-logo{
     height: 100%;
-    
 }
 
 .header-logo img{
@@ -126,6 +125,7 @@ onMounted(() => {
     display: flex;
     flex-direction: row;
     margin: auto 0;
+    margin-left: 2.5rem
 }
 
 .header-user .user-photo{
@@ -144,5 +144,16 @@ onMounted(() => {
 .user-name{
     display: inline-block;
     padding: 0.15rem 0.35rem;
+}
+
+.menu .menu-item a{
+    background-color: #fafafa !important;
+    color: #49784d;
+    box-shadow: none;
+    padding: 0.45rem !important;
+}
+
+.menu .menu-item a:hover{
+    background-color: var(--primary-color) !important;
 }
 </style>

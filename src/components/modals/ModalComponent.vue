@@ -54,15 +54,16 @@ defineProps({
 <style scoped>
 .window{
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -1rem;
+    left: -2rem;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    z-index: 999;
 }
 
 .modal{
